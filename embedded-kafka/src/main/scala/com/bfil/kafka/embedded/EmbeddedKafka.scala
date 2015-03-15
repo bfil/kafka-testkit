@@ -35,7 +35,7 @@ case class EmbeddedKafka(port: Int = 9092, zkPort: Int = 2181, logLevel: Level =
   
   def createTopic(topic: String, partitions: Int = 1, replicationFactor: Int = 1) = {
     AdminUtils.createTopic(zkClient, topic, partitions, replicationFactor, new Properties)
-    while(!topicExist(topic)) Thread.sleep(200)
+    while(!topicExists(topic)) Thread.sleep(200)
     log.info(s"Created topic: $topic")
   }
     
@@ -44,13 +44,13 @@ case class EmbeddedKafka(port: Int = 9092, zkPort: Int = 2181, logLevel: Level =
   def deleteTopic(topic: String) = {
     AdminUtils.deleteTopic(zkClient, topic)
     // Waiting for a topic to be deleted does not always complete
-    // while(topicExist(topic)) Thread.sleep(200)
+    // while(topicExists(topic)) Thread.sleep(200)
     log.info(s"Deleted topic: $topic")
   }
   
   def deleteTopics(topics: String*) = topics.foreach(t => deleteTopic(t))
   
-  def topicExist(topic: String) = AdminUtils.topicExists(zkClient, topic)
+  def topicExists(topic: String) = AdminUtils.topicExists(zkClient, topic)
 
   def start = {
     log.info("Starting Kafka..")
