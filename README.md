@@ -1,9 +1,9 @@
 Kafka Testkit
 =============
 
-A Scala library that provides an easily embeddable Kafka server for testing and prototyping (kafka-embedded).
+A Scala library that provides an easily embeddable Kafka server for testing and prototyping ([kafka-embedded](https://github.com/bfil/kafka-testkit/tree/master/embedded-kafka)).
 
-A separate module provides an easy integration with specs2 (specs-kafka)
+A separate module provides an easy integration with specs2 ([specs2-kafka](https://github.com/bfil/kafka-testkit/tree/master/specs2-kafka)).
 
 Setting up the dependencies
 ---------------------------
