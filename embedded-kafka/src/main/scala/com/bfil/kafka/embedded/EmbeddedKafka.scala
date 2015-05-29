@@ -60,6 +60,8 @@ case class EmbeddedKafka(port: Int = 9092, zkPort: Int = 2181, logLevel: Level =
   }
 
   def stop = {
+    log.info("Stopping Zookeeper client..")
+    zkClient.close
     log.info("Stopping Kafka..")
     kafka.shutdown
     kafka.awaitShutdown
