@@ -33,6 +33,7 @@ case class EmbeddedKafka(port: Int = 9092, zkPort: Int = 2181, logLevel: Level =
   props.setProperty("port", s"$port")
   props.setProperty("log.dirs", logDir.getAbsolutePath)
   props.setProperty("delete.topic.enable", "true")
+  props.setProperty("auto.create.topics.enable", "false")
   private val kafka = new KafkaServerStartable(new KafkaConfig(props))
   
   def createTopic(topic: String, partitions: Int = 1, replicationFactor: Int = 1) = {
@@ -45,8 +46,7 @@ case class EmbeddedKafka(port: Int = 9092, zkPort: Int = 2181, logLevel: Level =
     
   def deleteTopic(topic: String) = {
     AdminUtils.deleteTopic(zkClient, topic)
-    // Waiting for a topic to be deleted does not always complete
-    // while(topicExists(topic)) Thread.sleep(200)
+    while(topicExists(topic)) Thread.sleep(200)
     log.info(s"Deleted topic: $topic")
   }
   
@@ -63,14 +63,12 @@ case class EmbeddedKafka(port: Int = 9092, zkPort: Int = 2181, logLevel: Level =
 
   def stop = {
     log.info("Stopping Kafka..")
-    Try(zkClient.close)
     kafka.shutdown
     kafka.awaitShutdown
-    try {
+    Try {
+      zkClient.close
       server.close
       server.stop
-    } catch {
-      case ex: Throwable => ()
     }
     FileUtils.deleteDirectory(logDir)
     log.info("Kafka stopped")
