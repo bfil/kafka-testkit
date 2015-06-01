@@ -1,15 +1,17 @@
 package com.bfil.kafka.embedded
 
 import java.io.File
-import java.util.{Properties, UUID}
+import java.util.{ Properties, UUID }
+
+import scala.util.Try
 
 import org.I0Itec.zkclient.ZkClient
 import org.apache.commons.io.FileUtils
 import org.apache.curator.test.TestingServer
-import org.apache.log4j.{Level, Logger}
+import org.apache.log4j.{ Level, Logger }
 
 import kafka.admin.AdminUtils
-import kafka.server.{KafkaConfig, KafkaServerStartable}
+import kafka.server.{ KafkaConfig, KafkaServerStartable }
 import kafka.utils.ZKStringSerializer
 
 case class EmbeddedKafka(port: Int = 9092, zkPort: Int = 2181, logLevel: Level = Level.ERROR)(implicit val log: Logger = Logger.getRootLogger) {
@@ -61,9 +63,9 @@ case class EmbeddedKafka(port: Int = 9092, zkPort: Int = 2181, logLevel: Level =
 
   def stop = {
     log.info("Stopping Kafka..")
+    Try(zkClient.close)
     kafka.shutdown
     kafka.awaitShutdown
-    // Zookeeper testing server can throw exceptions when closed/stopped
     try {
       server.close
       server.stop

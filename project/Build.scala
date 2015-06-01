@@ -20,9 +20,9 @@ object ProjectBuild extends BFilBuild {
 object Dependencies {
   
   def all(scalaVersion: String) = Seq(
-    "org.apache.kafka" %% "kafka" % "0.8.2.0",
+    "org.apache.kafka" %% "kafka" % "0.8.2.1",
     "org.apache.commons" % "commons-io" % "1.3.2",
-    "org.apache.curator" % "curator-test" % "2.7.1")
+    "org.apache.curator" % "curator-test" % "2.8.0")
 
   def specs2(scalaVersion: String) = Seq(
     "org.specs2" %% "specs2-core" % "2.4.17" % "provided")
