@@ -4,7 +4,7 @@ import com.bfil.sbt._
 
 object ProjectBuild extends BFilBuild {
 
-  val buildVersion = "0.3.0"
+  val buildVersion = "0.4.0-SNAPSHOT"
 
   lazy val root = BFilRootProject("root", file("."))
     .aggregate(embeddedKafka, specs2Kafka)
