@@ -16,7 +16,7 @@ If you only need Embedded Kafka:
 
 ```scala
 libraryDependencies ++= Seq(
-  "com.bfil" %% "embedded-kafka" % "0.2.0"
+  "com.bfil" %% "embedded-kafka" % "0.3.0"
 )
 ```
 
@@ -24,7 +24,7 @@ To also get the helpers for Specs2:
 
 ```scala
 libraryDependencies ++= Seq(
-  "com.bfil" %% "specs2-kafka" % "0.2.0"
+  "com.bfil" %% "specs2-kafka" % "0.3.0"
 )
 ```
 
@@ -34,20 +34,22 @@ Don't forget to add the following resolver:
 resolvers += "BFil Nexus Releases" at "http://nexus.b-fil.com/nexus/content/repositories/releases/"
 ```
 
+Use version `0.3.0` for Kafka `0.9.0.1`, and version `0.2.0` for Kafka `0.8.2.1`.
+
 ### Using snapshots
 
 If you need a snapshot dependency:
 
 ```scala
 libraryDependencies ++= Seq(
-  "com.bfil" %% "embedded-kafka" % "0.3.0-SNAPSHOT"
+  "com.bfil" %% "embedded-kafka" % "0.4.0-SNAPSHOT"
 )
 
 libraryDependencies ++= Seq(
-  "com.bfil" %% "specs2-kafka" % "0.3.0-SNAPSHOT"
+  "com.bfil" %% "specs2-kafka" % "0.4.0-SNAPSHOT"
 )
 
-resolvers += "BFil Nexus Snapshots" at "http://nexus.b-fil.com/nexus/content/repositories/snapshots/";
+resolvers += "BFil Nexus Snapshots" at "http://nexus.b-fil.com/nexus/content/repositories/snapshots/"
 ```
 
 Usage
@@ -90,7 +92,7 @@ Tests must be run using the sequential keyword of Specs2.
 Extend `EmbeddedKafkaContext` to create a test context that starts up and stops an Embedded Kafka server before and after the test (it also manages the topics), like so:
 
 ```scala
-trait WithEmbeddedKafka extends EmbeddedKafkaContext {
+trait EmbeddedKafka extends EmbeddedKafkaContext {
   val topics = Set("test", "another-test")
 }
 ```
@@ -98,7 +100,7 @@ trait WithEmbeddedKafka extends EmbeddedKafkaContext {
 Then use it in your tests:
 
 ```scala
-"my test" in new WithEmbeddedKafka {
+"my test" in new EmbeddedKafka {
   // ...
 }
 ```
