@@ -1,16 +1,16 @@
 package com.bfil.kafka.embedded
 
 import java.io.File
-import java.util.{ Properties, UUID }
+import java.util.{Properties, UUID}
 
-import scala.util.Try
+import scala.util.{Random, Try}
 
 import org.apache.commons.io.FileUtils
 import org.apache.curator.test.TestingServer
 import org.apache.log4j.Logger
 
 import kafka.admin.AdminUtils
-import kafka.server.{ KafkaConfig, KafkaServerStartable }
+import kafka.server.{KafkaConfig, KafkaServerStartable}
 import kafka.utils.ZkUtils
 
 case class EmbeddedKafka(port: Int = 9092, zkPort: Int = 2181)(implicit val log: Logger = Logger.getLogger("com.bfil.EmbeddedKafka")) {
@@ -21,7 +21,8 @@ case class EmbeddedKafka(port: Int = 9092, zkPort: Int = 2181)(implicit val log:
 
   private val props = new Properties()
   props.setProperty("zookeeper.connect", zkUrl)
-  props.setProperty("broker.id", "0")
+  props.setProperty("reserved.broker.max.id", "1000000")
+  props.setProperty("broker.id", Random.nextInt(1000000).toString)
   props.setProperty("port", s"$port")
   props.setProperty("log.dirs", logDir.getAbsolutePath)
   props.setProperty("delete.topic.enable", "true")
@@ -48,7 +49,9 @@ case class EmbeddedKafka(port: Int = 9092, zkPort: Int = 2181)(implicit val log:
 
   def start = {
     log.info("Starting Kafka..")
-    server.start
+    Try {
+      server.start
+    }
     kafka.startup
     log.info("Kafka started")
   }
