@@ -16,7 +16,7 @@ If you only need Embedded Kafka:
 
 ```scala
 libraryDependencies ++= Seq(
-  "com.bfil" %% "embedded-kafka" % "0.4.0"
+  "com.bfil" %% "embedded-kafka" % "0.5.0"
 )
 ```
 
@@ -24,7 +24,7 @@ To also get the helpers for Specs2:
 
 ```scala
 libraryDependencies ++= Seq(
-  "com.bfil" %% "specs2-kafka" % "0.4.0"
+  "com.bfil" %% "specs2-kafka" % "0.5.0"
 )
 ```
 
@@ -34,7 +34,13 @@ Don't forget to add the following resolver:
 resolvers += "BFil Nexus Releases" at "http://nexus.b-fil.com/nexus/content/repositories/releases/"
 ```
 
-Use version `>=0.3.0` for Kafka `0.9.0.1`, and version `0.2.0` for Kafka `0.8.2.1`.
+Choose the version based on your target Kafka version
+
+- For Kafka `0.10.0.0` use `>=0.5.0`
+- For Kafka `0.9.0.1` use `>=0.3.0` and `<=0.4.0`
+- For Kafka `0.8.2.1` use `<=0.2.0`
+
+*APIs have changed between versions, so the examples below might only work for recent versions*
 
 ### Using snapshots
 
@@ -42,11 +48,11 @@ If you need a snapshot dependency:
 
 ```scala
 libraryDependencies ++= Seq(
-  "com.bfil" %% "embedded-kafka" % "0.5.0-SNAPSHOT"
+  "com.bfil" %% "embedded-kafka" % "0.6.0-SNAPSHOT"
 )
 
 libraryDependencies ++= Seq(
-  "com.bfil" %% "specs2-kafka" % "0.5.0-SNAPSHOT"
+  "com.bfil" %% "specs2-kafka" % "0.6.0-SNAPSHOT"
 )
 
 resolvers += "BFil Nexus Snapshots" at "http://nexus.b-fil.com/nexus/content/repositories/snapshots/"
