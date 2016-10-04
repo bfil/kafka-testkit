@@ -3,7 +3,7 @@ package com.bfil.kafka.embedded
 import java.io.File
 import java.util.{Properties, UUID}
 
-import scala.util.{Random, Try}
+import scala.util.Random
 
 import org.apache.commons.io.FileUtils
 import org.apache.curator.test.TestingServer
@@ -14,8 +14,8 @@ import kafka.server.{KafkaConfig, KafkaServerStartable}
 import kafka.utils.ZkUtils
 
 case class EmbeddedKafka(port: Int = 9092, zkPort: Int = 2181)(implicit val log: Logger = Logger.getLogger("com.bfil.EmbeddedKafka")) {
-  private val server = new TestingServer(zkPort, false)
-  private val zkUrl = server.getConnectString
+  private val zookeeper = new TestingServer(zkPort, false)
+  private val zkUrl = zookeeper.getConnectString
   private val logDir = new File(System.getProperty("java.io.tmpdir"), s"embedded-kafka-logs/${UUID.randomUUID.toString}")
   private lazy val zkUtils = ZkUtils(zkUrl, 5000, 5000, false)
 
@@ -49,9 +49,7 @@ case class EmbeddedKafka(port: Int = 9092, zkPort: Int = 2181)(implicit val log:
 
   def start = {
     log.info("Starting Kafka..")
-    Try {
-      server.start
-    }
+    zookeeper.start
     kafka.startup
     log.info("Kafka started")
   }
@@ -60,11 +58,9 @@ case class EmbeddedKafka(port: Int = 9092, zkPort: Int = 2181)(implicit val log:
     log.info("Stopping Kafka..")
     kafka.shutdown
     kafka.awaitShutdown
-    Try {
-      zkUtils.close
-      server.close
-      server.stop
-    }
+    zkUtils.close
+    zookeeper.close
+    zookeeper.stop
     FileUtils.deleteDirectory(logDir)
     log.info("Kafka stopped")
   }

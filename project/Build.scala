@@ -4,9 +4,10 @@ import com.bfil.sbt._
 
 object ProjectBuild extends BFilBuild {
 
-  val buildVersion = "0.7.0-SNAPSHOT"
+  val buildVersion = "0.7.0"
 
   lazy val root = BFilRootProject("kafka-testkit", file("."))
+    .settings(scalaVersion := "2.11.8")
     .aggregate(embeddedKafka, specs2Kafka)
 
   lazy val embeddedKafka = BFilProject("embedded-kafka", file("embedded-kafka"))

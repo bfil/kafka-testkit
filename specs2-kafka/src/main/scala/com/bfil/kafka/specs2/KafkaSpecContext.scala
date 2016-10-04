@@ -1,7 +1,5 @@
 package com.bfil.kafka.specs2
 
-import scala.util.Random
-
 import com.bfil.kafka.embedded.EmbeddedKafka
 import org.specs2.mutable.BeforeAfter
 
