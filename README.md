@@ -16,7 +16,7 @@ If you only need Embedded Kafka:
 
 ```scala
 libraryDependencies ++= Seq(
-  "com.bfil" %% "embedded-kafka" % "0.6.0"
+  "com.bfil" %% "embedded-kafka" % "0.7.0"
 )
 ```
 
@@ -24,7 +24,7 @@ To also get the helpers for Specs2:
 
 ```scala
 libraryDependencies ++= Seq(
-  "com.bfil" %% "specs2-kafka" % "0.6.0"
+  "com.bfil" %% "specs2-kafka" % "0.7.0"
 )
 ```
 
@@ -49,11 +49,11 @@ If you need a snapshot dependency:
 
 ```scala
 libraryDependencies ++= Seq(
-  "com.bfil" %% "embedded-kafka" % "0.7.0-SNAPSHOT"
+  "com.bfil" %% "embedded-kafka" % "0.8.0-SNAPSHOT"
 )
 
 libraryDependencies ++= Seq(
-  "com.bfil" %% "specs2-kafka" % "0.7.0-SNAPSHOT"
+  "com.bfil" %% "specs2-kafka" % "0.8.0-SNAPSHOT"
 )
 
 resolvers += "BFil Nexus Snapshots" at "http://nexus.b-fil.com/nexus/content/repositories/snapshots/"
