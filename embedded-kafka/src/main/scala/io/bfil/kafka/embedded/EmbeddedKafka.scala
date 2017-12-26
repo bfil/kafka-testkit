@@ -1,4 +1,4 @@
-package com.bfil.kafka.embedded
+package io.bfil.kafka.embedded
 
 import java.io.File
 import java.util.{Properties, UUID}
@@ -13,7 +13,7 @@ import kafka.admin.AdminUtils
 import kafka.server.{KafkaConfig, KafkaServerStartable}
 import kafka.utils.ZkUtils
 
-case class EmbeddedKafka(port: Int = 9092, zkPort: Int = 2181)(implicit val log: Logger = Logger.getLogger("com.bfil.EmbeddedKafka")) {
+case class EmbeddedKafka(port: Int = 9092, zkPort: Int = 2181)(implicit val log: Logger = Logger.getLogger("io.bfil.EmbeddedKafka")) {
   private val zookeeper = new TestingServer(zkPort, false)
   private val zkUrl = zookeeper.getConnectString
   private val logDir = new File(System.getProperty("java.io.tmpdir"), s"embedded-kafka-logs/${UUID.randomUUID.toString}")

@@ -1,6 +1,6 @@
-package com.bfil.kafka.specs2
+package io.bfil.kafka.specs2
 
-import com.bfil.kafka.embedded.EmbeddedKafka
+import io.bfil.kafka.embedded.EmbeddedKafka
 import org.specs2.mutable.BeforeAfter
 
 trait EmbeddedKafkaContext extends BeforeAfter { self: KafkaPortsProvider =>

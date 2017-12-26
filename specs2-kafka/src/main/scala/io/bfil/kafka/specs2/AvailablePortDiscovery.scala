@@ -1,4 +1,4 @@
-package com.bfil.kafka.specs2
+package io.bfil.kafka.specs2
 
 import java.net.ServerSocket
 import scala.util.control.NonFatal

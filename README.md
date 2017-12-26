@@ -8,7 +8,9 @@ A separate module provides an easy integration with specs2 ([specs2-kafka](https
 Setting up the dependencies
 ---------------------------
 
-__Kafka Testkit__ is available at my [Nexus Repository](http://nexus.b-fil.com/nexus/content/groups/public/), and it is cross compiled and published for both Scala 2.10 and 2.11.
+__Kafka Testkit__ is available on `Maven Central` (since version `0.8.0`), and it is cross compiled and published for Scala 2.12 and 2.11.
+
+*Older artifacts versions are not available anymore due to the shutdown of my self-hosted Nexus Repository in favour of Bintray*
 
 Using SBT, add the following dependencies to your build file
 
@@ -16,7 +18,7 @@ If you only need Embedded Kafka:
 
 ```scala
 libraryDependencies ++= Seq(
-  "com.bfil" %% "embedded-kafka" % "0.7.0"
+  "io.bfil" %% "embedded-kafka" % "0.8.0"
 )
 ```
 
@@ -24,40 +26,25 @@ To also get the helpers for Specs2:
 
 ```scala
 libraryDependencies ++= Seq(
-  "com.bfil" %% "specs2-kafka" % "0.7.0"
+  "io.bfil" %% "specs2-kafka" % "0.8.0"
 )
 ```
 
-Don't forget to add the following resolver:
+If you have issues resolving the dependency, you can add the following resolver:
 
 ```scala
-resolvers += "BFil Nexus Releases" at "http://nexus.b-fil.com/nexus/content/repositories/releases/"
+resolvers += Resolver.bintrayRepo("bfil", "maven")
 ```
 
 Choose the version based on your target Kafka version
 
-- For Kafka `0.10.0.1` use `>=0.6.0`
+- For Kafka `0.10.2.1` use `>=0.8.0`
+- For Kafka `0.10.0.1` use `>=0.6.0` and `<=0.7.0`
 - For Kafka `0.10.0.0` use `>=0.5.0` and `<=0.5.0`
 - For Kafka `0.9.0.1` use `>=0.3.0` and `<=0.4.0`
 - For Kafka `0.8.2.1` use `<=0.2.0`
 
 *APIs have changed between versions, so the examples below might only work for recent versions*
-
-### Using snapshots
-
-If you need a snapshot dependency:
-
-```scala
-libraryDependencies ++= Seq(
-  "com.bfil" %% "embedded-kafka" % "0.8.0-SNAPSHOT"
-)
-
-libraryDependencies ++= Seq(
-  "com.bfil" %% "specs2-kafka" % "0.8.0-SNAPSHOT"
-)
-
-resolvers += "BFil Nexus Snapshots" at "http://nexus.b-fil.com/nexus/content/repositories/snapshots/"
-```
 
 Usage
 -----
