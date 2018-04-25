@@ -4,7 +4,7 @@ lazy val root = Project("kafka-testkit", file("."))
 
 lazy val embeddedKafka = Project("embedded-kafka", file("embedded-kafka"))
   .settings(settings, libraryDependencies ++= Seq(
-    "org.apache.kafka" %% "kafka" % "0.10.2.1" exclude("log4j", "log4j") exclude("org.slf4j", "slf4j-log4j12"),
+    "org.apache.kafka" %% "kafka" % "1.0.1" exclude("log4j", "log4j") exclude("org.slf4j", "slf4j-log4j12"),
     "org.slf4j" % "log4j-over-slf4j" % "1.7.21",
     "org.apache.commons" % "commons-io" % "1.3.2",
     "org.apache.curator" % "curator-test" % "3.2.0"
