@@ -8,7 +8,7 @@ A separate module provides an easy integration with specs2 ([specs2-kafka](https
 Setting up the dependencies
 ---------------------------
 
-__Kafka Testkit__ is available on `Maven Central` (since version `0.9.0`), and it is cross compiled and published for Scala 2.12 and 2.11.
+__Kafka Testkit__ is available on `Maven Central` (since version `0.8.0`), and it is cross compiled and published for Scala 2.12 and 2.11.
 
 *Older artifacts versions are not available anymore due to the shutdown of my self-hosted Nexus Repository in favour of Bintray*
 
