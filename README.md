@@ -8,7 +8,7 @@ A separate module provides an easy integration with specs2 ([specs2-kafka](https
 Setting up the dependencies
 ---------------------------
 
-__Kafka Testkit__ is available on `Maven Central` (since version `0.8.0`), and it is cross compiled and published for Scala 2.12 and 2.11.
+__Kafka Testkit__ is available on `Maven Central` (since version `0.9.0`), and it is cross compiled and published for Scala 2.12 and 2.11.
 
 *Older artifacts versions are not available anymore due to the shutdown of my self-hosted Nexus Repository in favour of Bintray*
 
@@ -38,10 +38,10 @@ resolvers += Resolver.bintrayRepo("bfil", "maven")
 
 Choose the version based on your target Kafka version
 
-- For Kafka `1.0.1` use `>=0.9.0`
-- For Kafka `0.10.2.1` use `>=0.8.0` and `<0.9.0`
+- For Kafka `1.0.1` use `0.9.0`
+- For Kafka `0.10.2.1` use `0.8.0`
 - For Kafka `0.10.0.1` use `>=0.6.0` and `<=0.7.0`
-- For Kafka `0.10.0.0` use `>=0.5.0` and `<=0.5.0`
+- For Kafka `0.10.0.0` use `0.5.0`
 - For Kafka `0.9.0.1` use `>=0.3.0` and `<=0.4.0`
 - For Kafka `0.8.2.1` use `<=0.2.0`
 
@@ -113,7 +113,7 @@ License
 
 This software is licensed under the Apache 2 license, quoted below.
 
-Copyright © 2015-2017 Bruno Filippone <http://bfil.io>
+Copyright © 2015-2018 Bruno Filippone <http://bfil.io>
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not
 use this file except in compliance with the License. You may obtain a copy of
