@@ -27,6 +27,7 @@ case class EmbeddedKafka(port: Int = 9092, zkPort: Int = 2181)(implicit val log:
   props.setProperty("log.dirs", logDir.getAbsolutePath)
   props.setProperty("delete.topic.enable", "true")
   props.setProperty("auto.create.topics.enable", "false")
+  props.setProperty("offsets.topic.replication.factor", "1")
   private val kafka = new KafkaServerStartable(new KafkaConfig(props))
 
   def createTopic(topic: String, partitions: Int = 1, replicationFactor: Int = 1) = {

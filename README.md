@@ -18,7 +18,7 @@ If you only need Embedded Kafka:
 
 ```scala
 libraryDependencies ++= Seq(
-  "io.bfil" %% "embedded-kafka" % "0.8.0"
+  "io.bfil" %% "embedded-kafka" % "0.9.0"
 )
 ```
 
@@ -26,7 +26,7 @@ To also get the helpers for Specs2:
 
 ```scala
 libraryDependencies ++= Seq(
-  "io.bfil" %% "specs2-kafka" % "0.8.0"
+  "io.bfil" %% "specs2-kafka" % "0.9.0"
 )
 ```
 
@@ -38,7 +38,8 @@ resolvers += Resolver.bintrayRepo("bfil", "maven")
 
 Choose the version based on your target Kafka version
 
-- For Kafka `0.10.2.1` use `>=0.8.0`
+- For Kafka `1.0.1` use `>=0.9.0`
+- For Kafka `0.10.2.1` use `>=0.8.0` and `<0.9.0`
 - For Kafka `0.10.0.1` use `>=0.6.0` and `<=0.7.0`
 - For Kafka `0.10.0.0` use `>=0.5.0` and `<=0.5.0`
 - For Kafka `0.9.0.1` use `>=0.3.0` and `<=0.4.0`
